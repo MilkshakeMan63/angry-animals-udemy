@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://3v20dvmpkmef"]
+
+[ext_resource type="Texture2D" uid="uid://df4a57cbufvf6" path="res://assets/ui/panel_beige.png" id="1_i5dlk"]
+[ext_resource type="LabelSettings" uid="uid://bqrbgfl5ijusy" path="res://Fonts/lg_48_wh.tres" id="2_0amx3"]
+[ext_resource type="Script" path="res://Scenes/level_button.gd" id="2_fgm5d"]
+[ext_resource type="LabelSettings" uid="uid://cnsckxh2im78c" path="res://Fonts/lg_24_wh.tres" id="3_bf41l"]
+
+[sub_resource type="Animation" id="Animation_vatp8"]
+resource_name = "scale"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ld7wk"]
+_data = {
+"scale": SubResource("Animation_vatp8")
+}
+
+[node name="LevelButton" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+texture_normal = ExtResource("1_i5dlk")
+script = ExtResource("2_fgm5d")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LevelLable" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "3"
+label_settings = ExtResource("2_0amx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "1000"
+label_settings = ExtResource("3_bf41l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ld7wk")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
