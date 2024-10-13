@@ -14,11 +14,13 @@ var level_scene: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	level_lable.text = str(level_number)
-	level_scene = load("res://Scenes/level%s.tscn" % level_number)
+	var best_score = ScoreManager.get_best_for_level(str(level_number)) # setting the best score var as the score managers best for level sending in the level number as a string
+	score_label.text = str(best_score)
+	level_scene = load("res://Scenes/level%s.tscn" % level_number) # loads the saved level scene by using the level number selected for each label when loading
 
 
 func _on_pressed() -> void:
-	ScoreManager.set_level_selected(level_number)
+	ScoreManager.set_level_selected(level_number) # set the score manager current level to the level number export var 
 	get_tree().change_scene_to_packed(level_scene)
 
 
