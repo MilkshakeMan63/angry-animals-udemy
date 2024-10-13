@@ -22,8 +22,11 @@ ScoreManager="*res://Scripts/Singletons/score_manager.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=1.75
 window/main_scene="res://Scenes/tester.tscn"
 
 [global_group]
